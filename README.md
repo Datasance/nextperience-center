@@ -1,6 +1,5 @@
 # Getting Started Guide for Installation Datasane PoT on TD-SYNNEX Nextperience Demo Center
 
-- [1- Introduction]
 
 Edge Compute Networks ('ECNs') are complicated things. At a high level, they are composed of a Control Plane and a set of Agents.
 
@@ -8,9 +7,9 @@ Setting up and managing an ECN out of an arbitrary set of remote hosts can seem 
 
 In this guide, we will go through deployment onto a Kubernetes cluster.  we also need to setup the network, but we only need to prepare the Agent hosts for SSH access.
 
-- [2- Downdload and Install potctl]
+##  1. Downdload and Install potctl
 
-## Install potctl on Mac
+- ## Install potctl on Mac
 
 Mac users can use Homebrew:
 
@@ -19,11 +18,11 @@ brew tap datasance/potctl
 brew install potctl
 ```
 
-## Install potctl on Windows
+- ## Install potctl on Windows
 
 The Windows binary can be downloaded from [Datasance Packages](https://github.com/Datasance/potctl/releases/download/v1.0.0/potctl.exe).
 
-### Prepare Windows
+- ### Prepare Windows
 
 In order to use `potctl` to deploy an ECN locally on Windows we will need to configure Docker to run Linux containers:
 
@@ -31,7 +30,7 @@ In order to use `potctl` to deploy an ECN locally on Windows we will need to con
 - Enable Hyper-V in Powershell `Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart`
 - Ensure that docker is running with [Linux containers mode](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
 
-## Install potctl on Linux
+- ## Install potctl on Linux
 
 The Debian package can be installed like so:
 
@@ -51,7 +50,7 @@ sudo yum update
 sudo yum install potctl
 ```
 
-## Verify potctl Installation
+- ## Verify potctl Installation
 
 Run `potctl version` to verify you have successfully installed the CLI.
 
