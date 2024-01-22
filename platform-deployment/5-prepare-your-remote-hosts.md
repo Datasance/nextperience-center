@@ -1,8 +1,7 @@
 # Prepare Remote Hosts
 
-An ioFog Edge Compute Network ('ECN') is composed of an ioFog Controller and a set of ioFog Agents. A typical ECN will have each instance of the various components deployed on a different remote host.
 
-ECN's are deployed using `potctl`. The following steps will ensure that our remote hosts are ready to have `potctl` deploy ECN components onto them remotely.
+ECN's are deployed using `potctl`. The following steps will ensure that our remote Agent hosts are ready to have `potctl` deploy ECN components onto them remotely.
 
 ## Add SSH RSA Public Key to the Remote Host
 
@@ -30,19 +29,4 @@ In order to prevent `potctl` from failing its SSH sessions, we need to ensure th
 
 We can achieve this by editing the sudoers file by first running `su visudo` on the remote host. This will open up the sudoers file for editing. Make sure this line is present in the file `%sudo ALL=(ALL) NOPASSWD:ALL`.
 
-<aside class="notifications tip">
-  <h3><img src="/images/icos/ico-tip.svg" alt="">Where to go from here?</h3>
-  <p>Now we are ready to deploy the Controller! If we want to deploy it directly on a remote host, go to <a href="#/./ioFog_3.0/platfomr-deployment/remote-control-plane">Remote - Deploy Control Plane</a>.</p>
-  
-  <p>Otherwise, to deploy on Kubernetes cluster, go to <a href="#/./ioFog_3.0/platfomr-deployment/kubernetes-prepare-cluster">Kubernetes - Prepare A Cluster</a>, which is a series of steps needed to deploy ioFog on Kubernetes clusters.</p>
-  
-  <p>Both of these path eventually join when deploying Agents in <a href="#/./ioFog_3.0/platfomr-deployment/setup-your-agents">Setup Agents</a> guide. But note that at this point, we cannot deploy Agents yet, because the have no Control Plane.</p>
-</aside>
 
-<aside class="notifications contribute">
-  <h3><img src="/images/icos/ico-github.svg" alt="">See anything wrong with the document? Help us improve it!</h3>
-  <a href="https://github.com/eclipse-iofog/iofog.org/edit/develop/content/docs/3.0/platform-deployment/prepare-your-remote-hosts.md"
-    target="_blank">
-    <p>Edit this page on Github!</p>
-  </a>
-</aside>
