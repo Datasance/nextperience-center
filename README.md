@@ -7,6 +7,11 @@ Setting up and managing an ECN out of an arbitrary set of remote hosts can seem 
 
 In this guide, we will go through deployment onto a Kubernetes cluster.  we also need to setup the network, but we only need to prepare the Agent hosts for SSH access.
 
+<figure>
+  <img src="/images/nextperience.png" alt="">
+  <figcaption>Demo Setup.</figcaption>
+</figure>
+
 ##  1. Downdload and Install potctl
 
 - ## Install potctl on Mac
@@ -58,7 +63,7 @@ Run `potctl version` to verify you have successfully installed the CLI.
   <h3><img src="/images/icos/ico-note.svg" alt="">Need more details aboout potctl</h3>
   <p> </p>
  </aside>
- 
+
 Check out [Getting familiar with potctl](https://docs.datasance.com/#/./ioFog_3.0/potctl/getting-familiar) and [potctl reference ](https://docs.datasance.com/#/./ioFog_3.0/reference-potctl/reference-kinds).
 
 - [3- Prepare Network]
