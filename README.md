@@ -8,7 +8,7 @@ Setting up and managing an ECN out of an arbitrary set of remote hosts can seem 
 In this guide, we will go through deployment onto a Kubernetes cluster.  we also need to setup the network, but we only need to prepare the Agent hosts for SSH access.
 
 <figure>
-  <img src="/images/nextperience.png" alt="">
+  <img src="/nextperience.png" alt="">
   <figcaption>Demo Setup.</figcaption>
 </figure>
 
