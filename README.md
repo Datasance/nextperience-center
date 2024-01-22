@@ -56,10 +56,10 @@ Run `potctl version` to verify you have successfully installed the CLI.
 
 <aside class="notifications note">
   <h3><img src="/images/icos/ico-note.svg" alt="">Need more details aboout potctl</h3>
-  <p>Check out [Getting familiar with potctl ](https://docs.datasance.com/#/./ioFog_3.0/potctl/getting-familiar)  and [potctl reference ](https://docs.datasance.com/#/./ioFog_3.0/reference-potctl/reference-kinds). </p>
+  <p> </p>
+ </aside>
  
-</aside>
-
+Check out [Getting familiar with potctl](https://docs.datasance.com/#/./ioFog_3.0/potctl/getting-familiar) and [potctl reference ](https://docs.datasance.com/#/./ioFog_3.0/reference-potctl/reference-kinds).
 
 - [3- Prepare Network]
 - [4- Prepare your Kubernetes Cluster for PoT Control Plane Deployment]
