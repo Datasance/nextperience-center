@@ -131,6 +131,10 @@ If in doubt, we can use the default cluster role `cluster-admin`.
 
 ECN's are deployed using `potctl`. The following steps will ensure that our remote Agent hosts are ready to have `potctl` deploy ECN components onto them remotely.
 
+- ## The Operating System for Remote Agent Host
+
+You can run and deploy Agent on any Linux distribution, but for the Demo Center we recommended to install Debian10, Debian12, Ubuntu 20.04 or Ubuntu 22.04.
+
 - ## Add SSH RSA Public Key to the Remote Host
 
 `potctl` will SSH into our remote hosts using an RSA SSH key-pair we specify.
@@ -159,7 +163,124 @@ We can achieve this by editing the sudoers file by first running `su visudo` on 
 
 
 
-- [6- Deploy Control Plane Using potctl]
-- [7- Deploy Agent]
+
+
+##  5. Deploy Control Plane Using potctl
+
+
+Every Edge Compute Network ('ECN') starts with a Control Plane that allows us to manage our ECN's resources.
+
+In this guide, our Control Plane will deploy a single Controller instance.
+
+
+ - ## Deploy a Control Plane on Kubernetes
+
+Create a "controlplane.yaml" file and save it to your computer where potctl is running.
+
+```bash
+nano controlplane.yaml
+```
+
+```bash
+---
+apiVersion: datasance.com/v1
+kind: KubernetesControlPlane
+metadata:
+  name: tdsynnex
+  namespace: nextperience
+spec:
+  iofogUser:
+    name: xx
+    surname: xx
+    email: xx@xx.com
+    password: xxx
+  config: ~/.kube/config
+  replicas:
+    controller: 1
+  images:
+    controller: ghcr.io/datasance/controller
+    operator: ghcr.io/datasance/operator
+    portManager: ghcr.io/datasance/port-manager
+    proxy: ghcr.io/datasance/proxy
+    router: ghcr.io/datasance/router  
+```
+
+Make sure to specify the correct value for the `config` field. Here we implicitly use the "nextperience" namespace. Note that potctl will deploy to the Kubernetes namespace that it is configured to use through the `-n` flag or to the default namespace we set via `potctl configure current-namespace ...`. This means that by following these examples, we end up installing the Control Plane in `nextperience` namespace on the cluster. 
+
+Once we have edited the fields to our liking, we can go ahead and run:
+
+```bash
+potctl create namespace nextperience
+```
+
+```bash
+potctl deploy -f controlplane.yaml -n nextperience
+```
+
+Naturally, we can also use `kubectl` to see what is happening on the Kubernetes cluster.
+
+```bash
+kubectl get all
+```
+
+The next section covers how to do the same thing we just did, but on a remote host instead of a Kubernetes cluster. We can <a href=#verify-the-deployment>skip ahead</a>.
+
+- ## Verify the Deployment
+
+We can use the following commands to verify the Control Plane is up and running:
+
+```bash
+potctl get all -n nextperience
+```
+
+
+##  6. Deploy Agent
+
+- # Setup Agents
+
+The actual 'edge' of our Edge Compute Network ('ECN') is composed of Agents. The other component (the Controllers) can be deployed anywhere, including cloud infrastructure, but Agents can only live on standalone hosts.
+
+- ## Deploy Agents on Remote Hosts
+
+Create a agent.yaml file and save it to your computer where potctl is running.
+
+```bash
+nano agent.yaml
+```
+
+```bash
+---
+apiVersion: datasance.com/v1
+kind: Agent
+metadata:
+  name: edge-1
+  namespace: nextperience
+spec:
+  host: 0.0.0.0
+  ssh:
+    user: foo
+    keyFile: ~/.ssh/id_rsa
+```
+
+Make sure to edit the `name`, `host`, `ssh.user`, and `ssh.keyFile` fields to correspond with the remote host we are deploying to.
+
+Once we have edited the fields to our liking, go ahead and run:
+
+```bash
+potctl deploy -f agent.yaml -n nextperience
+```
+
+## Verify the Deployment
+
+We can use the following commands to verify the Agent is up and running:
+
+```bash
+potctl get agents -n nextperience
+```
+
+```bash
+potctl describe agent edge-1 -n nextperience
+```
+
 
 
