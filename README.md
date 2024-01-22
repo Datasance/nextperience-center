@@ -31,9 +31,6 @@ The Windows binary can be downloaded from [Datasance Packages](https://github.co
 
 In order to use `potctl` to deploy an ECN locally on Windows we will need to configure Docker to run Linux containers:
 
-- Install [docker desktop for windows](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe)
-- Enable Hyper-V in Powershell `Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart`
-- Ensure that docker is running with [Linux containers mode](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
 
 - ## Install potctl on Linux
 
